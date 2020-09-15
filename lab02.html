@@ -1,0 +1,28 @@
+<html>
+<body>
+<canvas id='lab02' height="500" width="500" style="border:1px solid"></canvas>
+<a href='#' id='btn' class='button' style="font-size: 228%">(づ￣ ³￣)づ ~(˘▾˘~)
+</a>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('lab02');
+		var ctx = canvas.getContext('2d');
+
+		for(var i=0; i<canvas.height; i++) {
+			for (var j=0; j<canvas.width; j++) {
+				if ((i%2)^(j%2)) 
+					ctx.fillRect(i,j,1,1);
+			}
+		}
+
+		var btn = document.getElementById('btn');
+		btn.addEventListener('click', function(e) {
+			alert('AZINO 777');
+			var dataUrl = canvas.toDataURL('image/png');
+			btn.href = dataUrl;
+			btn.download = 'lab02.png'
+		});
+	
+	</script>
+</body>
+</html>

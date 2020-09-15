@@ -1,0 +1,41 @@
+<html>
+<body>
+<canvas id='lab01' height="350" width="500" style="border:3px solid; border-radius:100px; border-color:pink; background-color: black"></canvas>
+	<script type="text/javascript">
+		let canvas = document.getElementById('lab01');
+		let ctx = canvas.getContext('2d');
+		let eventFlag=true;
+		let j=0;
+		let intervalID;
+		let img = new Image();
+
+		img.src = 'astolfo_plushie.jpg';
+		img.onload = function() {
+			let pattern = ctx.createPattern(img, "repeat");
+			ctx.fillStyle = pattern;
+			ctx.beginPath();
+			ctx.arc(400*Math.sin(0)+250, 150*Math.cos(180)+150, 200, 0, 2 * Math.PI);
+			ctx.fill();
+		}
+
+		canvas.addEventListener('click',function(event){
+			if(eventFlag){
+				intervalID=setInterval(function(){
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+
+				ctx.beginPath();
+				ctx.arc(400*Math.sin(3.14*j/180)+250, 150*Math.cos(3.14*j/180+180)+150, 200, 0, 2 * Math.PI);
+				ctx.fill();
+				j+=1;
+				},10);
+				eventFlag=false;
+			}
+			else
+			{
+				clearInterval(intervalID);
+				eventFlag=true;
+			}
+	});
+	</script>
+</body>
+</html>
